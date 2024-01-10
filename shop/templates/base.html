@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/logo.svg' %}"/>
+    {% block css_styles %} {% endblock %}
+</head>
+<body>
+<header>
+    <div class="header__top">
+        <div class="header__top__left">
+            <a class="logo" href="{% url 'home' %}">PerfectFlowers</a>
+
+        </div>
+        <div class="header__top__right">
+            <form class="search" action="{% url 'search' %}" method="get">
+                <img height="24" style="padding-block: 5px" src="{% static 'images/search.svg' %}" alt="">
+                <input type="search" name="query" required minlength="3" placeholder="Найти...">
+            </form>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="header-user">{{ user.username }}</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="header-user">Войти</a>
+                <a href="{% url 'register' %}" class="product-button">Зарегистрироваться</a>
+            {% endif %}
+            <a href="{% url 'cart_detail' %}" class="header-cart">{{ cart|length }}</a>
+        </div>
+    </div>
+    <div class="header__bottom">
+        <a href="{% url 'products_list' %}" class="header__bottom-category">Все</a>
+        {% for c in categories %}
+            <a href="{{ c.get_absolute_url }}" class="header__bottom-category">{{ c }}</a>
+        {% endfor %}
+    </div>
+</header>
+<div class="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+<footer>
+    <p class="header-work-time">Режим работы: Круглосуточно</p>
+    <p class="header-location">г. Владивосток ул. Невыдуманная 13г</p>
+    <p class="header-call">+847432847</p>
+    <p>2023 © PerfectFlowers</p>
+</footer>
+</body>
+</html>

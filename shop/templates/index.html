@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block title %} PerfectFlowers {% endblock %}
+
+{% block content %}
+    <div class="about">
+        <div class="about-text">
+            <p class="about-text-description"><b>PerfectFlowers</b> - это интернет-магазин,
+                который предлагает самый широкий и разнообразный ассортимент свежих цветов и букетов.
+                У нас вы найдете классические розы, экзотические орхидеи, яркие герберы, нежные лилии и многое другое.
+                В нашем интернет-магазине вы можете заказать цветы с доставкой по городу в любое удобное для вас время.
+                Мы гарантируем высокое качество наших цветов и отличное обслуживание каждого клиента.
+                Создайте атмосферу тепла и уюта, подарив любимому человеку наш прекрасный цветочный букет!</p>
+        </div>
+    </div>
+    <div class="popular">
+        <h2 class="popular-title">Хит продаж</h2>
+        <div class="popular-catalog">
+            {% for popular_product in popular_products %}
+                <a href="{{ popular_product.get_absolute_url }}">
+                    <div class="product-card" style="background-image: url('{{ popular_product.image.url }}')">
+                        <p class="product-card-name">{{ popular_product.name }}</p>
+                        <p class="product-button">{{ popular_product.price }} p.</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="more">
+        <a class="product-button" href="{% url 'products_list' %}">Смотреть все</a>
+    </div>
+{% endblock %}

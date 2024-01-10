@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart_detail.css' %}">
+{% endblock %}
+
+{% block title %} Корзина {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="cart-title">
+            <h1 class="cart-title-name">Корзина</h1>
+            <h2 class="cart-title-sum">Итого: <b>{{ cart.total_price }} p.</b></h2>
+            <a class="product-button" href="{% url 'order_processed' %}">Оформить заказ</a>
+        </div>
+    </div>
+    <div class="cart-list">
+        {% if cart %}
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <div class="container-list-item">
+                        <img class="container-list-item-image" src="{{ product.image.url }}">
+                        <a class="container-list-item-name"
+                           href="{{ product.get_absolute_url }}">{{ product }}</a>
+                        <p class="container-list-item-price">За 1 штуку: {{ item.price }} p.</p>
+                        <form class="form-quantity" action="{% url 'cart_update' product.id %}" method="post">
+                            {% csrf_token %}
+                            {{ item.quantity_form }}
+                        </form>
+                        <a class="product-button" href="{% url 'remove_from_cart' product.id %}">Убрать</a>
+                        <p class="container-list-item-price">Всего: {{ item.total_price }} p.</p>
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        {% else %}
+            <div class="container-list-item"><p>Ваша корзина пуста</p></div>
+            <a href="{% url 'products_list' %}" class="product-button open-catalog">Продолжить покупки</a>
+        {% endif %}
+    </div>
+{% endblock %}

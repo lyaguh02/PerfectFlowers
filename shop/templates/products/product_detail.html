@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product_detail.css' %}">
+{% endblock %}
+
+{% block title %} {{ product }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="container-head">
+            <img class="product-image" src="{{ product.image.url }}" alt="">
+            <div class="product-main">
+                <div class="product-main-text">
+                    <h1 class="product-main-text-name">{{ product.name }}</h1>
+                    <p class="product-main-text-size">Ширина: {{ product.width }}  Высота: {{ product.height }}</p>
+                    <p class="product-main-text-view">{{ product.get_view_count }}</p>
+                </div>
+                <div class="product-main-actions">
+                    <h1 style="font-weight: bold;">{{ product.price }} руб.</h1>
+                    <a href="{% url 'add_to_cart' product.id %}" class="product-button">Добавить в корзину</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-body">
+            <h1>Описание</h1>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+{% endblock %}

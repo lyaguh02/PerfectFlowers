@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'Dihjauti';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Dihjauti'), url('../fonts/Dihjauti-Regular.otf') format('opentype');
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #254468;
+    font-family: 'Dihjauti', serif;
+    font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 10%;
+}
+
+header {
+    height: fit-content;
+    background: #ffffff;
+    color: #254468;
+    text-decoration: none;
+    width: 100%;
+}
+
+header a {
+    color: #254468;
+    text-decoration: none;
+}
+
+.header__top, .header__bottom {
+    padding-inline: 25px;
+    padding-block: 15px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 25px;
+}
+
+.header__top {
+    justify-content: space-between;
+    height: 50px;
+}
+
+.header__top__left, .header__top__right {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__top {
+    border-bottom: 2px solid white;
+}
+
+.header__bottom {
+    background: #c71953;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 30px;
+}
+
+.header__bottom-category {
+    color: white;
+}
+
+.search {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 5px;
+    color: #254468;
+    border-bottom: 2px solid #c71953;
+}
+
+.search input {
+    background: transparent;
+    color: #254468;
+    border: 0;
+    padding: 5px;
+}
+
+.logo {
+    padding-left: 30px;
+    background-image: url("../images/logo.svg");
+    background-position: left center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    font-size: 24px;
+    text-decoration: none;
+    margin: 0;
+}
+
+.header-user, .header-cart, .header-work-time, .header-location, .header-call {
+    padding-left: 30px;
+    background-position: left center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    margin: 0;
+}
+
+.header-user {
+    background-image: url("../images/user_circle.svg");
+}
+
+.header-cart {
+    background-image: url("../images/shop_cart.svg");
+}
+
+.header-work-time {
+    background-image: url("../images/calendar.svg");
+}
+
+.header-location {
+    background-image: url("../images/location.svg");
+}
+
+.header-call {
+    background-image: url("../images/call.svg");
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-button {
+    background: #ffffff;
+    color: #c71953;
+    border: 2px solid #c71953;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+input {
+    background: #ffffff;
+    color: #254468;
+    border: 2px solid #c71953;
+    padding: 5px;
+    text-decoration: none;
+}
+
+footer {
+    color: #254468;
+    padding-inline: 25px;
+    padding-block: 10px;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+

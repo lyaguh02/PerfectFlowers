@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/products_list.css' %}">
+{% endblock %}
+
+{% block title %} Каталог {% endblock %}
+
+{% block content %}
+    {% if custom_title %}
+        <h1>{{ custom_title }}</h1>
+    {% elif category %}
+        <h1>{{ category }}</h1>
+    {% else %}
+        <h1>Все товары</h1>
+    {% endif %}
+
+    {% if products %}
+        <div class="product-list">
+            {% for product in products %}
+                <a href="{{ product.get_absolute_url }}">
+                    <div class="product-card" style="background-image: url('{{ product.image.url }}');">
+                        <p class="product-card-name">{{ product.name }}</p>
+                        <p class="product-button">{{ product.price }} p.</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="not-found">
+            <h2>:(</h2>
+            <h2>Нужные товары не найдены</h2>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block title %} Вход {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Вход</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="login-block">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="password-block">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Войти"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </form>
+    </div>
+{% endblock %}

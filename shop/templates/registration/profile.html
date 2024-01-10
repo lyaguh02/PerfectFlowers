@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block title %} {{ user.username }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="user-avatar">
+            <img class="user-avatar-image" src="{% static 'images/user_circle.svg' %}" alt="">
+            <h1 class="user-avatar-name">{{ user.username }}</h1>
+        </div>
+        <div class="user-actions">
+            <a class="product-button" href="{% url 'cart_detail' %}">Открыть корзину</a>
+            {% if user.is_superuser %}
+                <a class="product-button" href="/admin">Открыть административную панель</a>
+            {% endif %}
+            <a class="product-button" href="{% url 'logout' %}">Выйти из аккаунта</a>
+        </div>
+    </div>
+{% endblock %}

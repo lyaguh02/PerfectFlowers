@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.register-form {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.register-form .helptext {
+    margin-top: 2px;
+    margin-bottom: 25px;
+}
+
+.register-form .product-button {
+    margin-top: 15px;
+}
